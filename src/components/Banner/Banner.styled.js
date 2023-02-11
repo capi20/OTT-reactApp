@@ -12,7 +12,7 @@ export const StyledBanner = styled.div`
 
 	.banner-top {
 		padding-left: 30px;
-		padding-top: 140px;
+		padding-top: 200px;
 		width: 40%;
 
 		&__title {

@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 
 function App() {
 	return (
-		<div className="App">
+		<div className="App" style={{ backgroundColor: "#192133" }}>
 			<Header />
 			<HomeScreen />
 		</div>

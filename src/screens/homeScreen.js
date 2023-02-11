@@ -3,9 +3,9 @@ import Banner from "../components/Banner/Banner";
 
 const homeScreen = () => {
 	return (
-		<div className="home">
+		<section className="home">
 			<Banner />
-		</div>
+		</section>
 	);
 };
 

@@ -1,9 +1,10 @@
 import HomeScreen from "./screens/HomeScreen";
-import "./App.css";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
 	return (
 		<div className="App">
+			<Navigation />
 			<HomeScreen />
 		</div>
 	);

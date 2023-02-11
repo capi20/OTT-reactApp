@@ -1,7 +1,7 @@
 const API_KEY = "4aa5c5ced46b2088564fc28b70063695";
 // const API_KEY = process.env.REACT_APP_API_KEY
 
-export default requests = {
+const requests = {
 	fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
 	fetNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
 	fetchTopRated: `/movie/top_rated?api_key=${API_KEY}&language=en-US`,
@@ -11,3 +11,5 @@ export default requests = {
 	fetchRomanceMovies: `/discover/movie/?api_key=${API_KEY}&with_genres=10749`,
 	fetchDocumentaries: `/discover/movie/?api_key=${API_KEY}&with_genres=99`
 };
+
+export default requests;

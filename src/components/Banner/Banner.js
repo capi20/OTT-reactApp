@@ -5,7 +5,7 @@ import axios from "../../axios";
 import requests from "../../Requests";
 import TypeWriter from "react-typewriter";
 
-const Banner = () => {
+const Banner = ({ openModal, movieData }) => {
 	const [movie, setMovie] = useState([]);
 	const [overview, setOverview] = useState(true);
 
@@ -24,6 +24,11 @@ const Banner = () => {
 		fetchData();
 	}, []);
 
+	const modalHandler = (movie) => {
+		openModal();
+		movieData(movie);
+	};
+
 	const truncate = (string, n) =>
 		string?.length > n ? string.substr(0, n - 1) + "..." : string;
 
@@ -38,15 +43,19 @@ const Banner = () => {
 				</h1>
 				<div className="banner-top__buttons">
 					<button className="banner-top__button">Play</button>
-					<button className="banner-top__button">Info</button>
+					<button
+						className="banner-top__button"
+						onClick={() => modalHandler(movie)}>
+						More Info
+					</button>
 				</div>
-				<h2
+				<p
 					className="banner-top__description"
 					onClick={() => setOverview(!overview)}>
 					<TypeWriter typing={1}>
 						{overview ? truncate(movie?.overview, 150) : movie.overview}
 					</TypeWriter>
-				</h2>
+				</p>
 			</div>
 
 			<div className="banner-bottom" />

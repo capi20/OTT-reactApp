@@ -23,8 +23,6 @@ export const StyledBanner = styled.div`
 		&__description {
 			width: 100%;
 			line-height: 1.3;
-			font-size: 1.2rem;
-			font-weight: 600;
 			cursor: pointer;
 		}
 

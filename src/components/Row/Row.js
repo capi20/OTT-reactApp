@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { StyledRow } from "./Row.styled";
 import axios from "../../axios";
 
-function Row({ title, fetchUrl, isLargeRow = false }) {
+function Row({ title, fetchUrl, openModal, movieData, isLargeRow = false }) {
 	const [movies, setMovies] = useState([]);
 
 	const base_url = "https://image.tmdb.org/t/p/original";
@@ -12,12 +12,16 @@ function Row({ title, fetchUrl, isLargeRow = false }) {
 		async function fetchData() {
 			const request = await axios.get(fetchUrl);
 			setMovies(request.data.results);
-			console.log(request.data.results);
 			return request;
 		}
 
 		fetchData();
 	}, [fetchUrl]);
+
+	const modalHandler = (movie) => {
+		openModal();
+		movieData(movie);
+	};
 
 	return (
 		<StyledRow>
@@ -28,7 +32,9 @@ function Row({ title, fetchUrl, isLargeRow = false }) {
 					(movie) =>
 						((isLargeRow && movie.poster_path) ||
 							(!isLargeRow && movie.poster_path)) && (
-							<div className="row__posterInfo">
+							<div
+								className="row__posterInfo"
+								onClick={() => modalHandler(movie)}>
 								<img
 									className={`row__poster-img ${
 										isLargeRow && "row__poster-img--large"

@@ -25,11 +25,11 @@ export const StyledRow = styled.div`
 		cursor: pointer;
 		position: relative;
 		transition: transform 450ms;
-	}
 
-	.row__posterInfo:hover {
-		transform: scale(1.15);
-		z-index: 9999;
+		&:hover {
+			transform: scale(1.15);
+			z-index: 9;
+		}
 	}
 
 	.row__poster-img {

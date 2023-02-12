@@ -4,11 +4,14 @@ import axios from "../../axios";
 import MoviePoster from "../MoviePoster/MoviePoster";
 import { StyledRow } from "./Row.styled";
 
-function Row({ title, fetchUrl, openModal, movieData, isLargeRow = false }) {
+function Row({ title, fetchUrl }) {
 	const [movies, setMovies] = useState([]);
+
+	console.log(fetchUrl);
 
 	useEffect(() => {
 		async function fetchData() {
+			console.log(fetchUrl);
 			const request = await axios.get(fetchUrl);
 			setMovies(request.data.results);
 			return request;
@@ -22,16 +25,7 @@ function Row({ title, fetchUrl, openModal, movieData, isLargeRow = false }) {
 			<h2>{title}</h2>
 			<div className="row__posters">
 				{movies.map(
-					(movie) =>
-						((isLargeRow && movie.poster_path) ||
-							(!isLargeRow && movie.poster_path)) && (
-							<MoviePoster
-								movie={movie}
-								openModal={openModal}
-								movieData={movieData}
-								isLargeRow={isLargeRow}
-							/>
-						)
+					(movie) => movie.poster_path && <MoviePoster movie={movie} />
 				)}
 			</div>
 		</StyledRow>

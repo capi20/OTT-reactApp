@@ -2,7 +2,7 @@ import React, { useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "../../axios";
-import requests from "../../Requests";
+import { searchAPI } from "../../Requests";
 import { FaSearch } from "react-icons/fa";
 import { searchContext } from "../../context/searchContext";
 import { StyledNav } from "./Header.styled";
@@ -19,11 +19,14 @@ const Navigation = () => {
 			return;
 		}
 
-		const request = await axios.get(
-			`${requests.searchMovie}&query=${searchQuery}&page=1`
-		);
+		const request = await axios.get(`${searchAPI}&query=${searchQuery}&page=1`);
 
-		searchResultHandler(request.data.results);
+		if (request.data.results.length) {
+			searchResultHandler(request.data.results);
+		} else {
+			searchResultHandler("");
+		}
+
 		navigate(`/search/${searchQuery}`);
 	};
 

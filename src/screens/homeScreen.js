@@ -14,17 +14,9 @@ const HomeScreen = () => {
 		<>
 			<Banner />
 			<Rows>
-				<Row
-					title="Originals"
-					fetchUrl={requests.fetNetflixOriginals}
-					isLargeRow
-				/>
-				<Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-				<Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-				<Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-				<Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-				<Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-				<Row title="Documentary" fetchUrl={requests.fetchDocumentaries} />
+				{requests.map((request) => (
+					<Row title={request[0]} fetchUrl={request[1]} />
+				))}
 			</Rows>
 		</>
 	);

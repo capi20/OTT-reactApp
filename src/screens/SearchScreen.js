@@ -24,11 +24,15 @@ const SearchScreen = () => {
 		<StyledSearchScreen>
 			<h2>Results for: {params.id}</h2>
 
-			<div className="search-movie-wrapper">
-				{searchResult.map((movie) => (
-					<MoviePoster movie={movie} />
-				))}
-			</div>
+			{searchResult ? (
+				<div className="search-movie-wrapper">
+					{searchResult.map((movie) => (
+						<MoviePoster movie={movie} />
+					))}
+				</div>
+			) : (
+				<h3>No result found!</h3>
+			)}
 		</StyledSearchScreen>
 	);
 };

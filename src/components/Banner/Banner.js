@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import axios from "../../axios";
-import requests from "../../Requests";
+import { trendingAPI } from "../../Requests";
 import TypeWriter from "react-typewriter";
 import MovieData from "../MovieData/MovieData";
 import { modalContext } from "../../context/modalContext";
@@ -14,7 +14,7 @@ const Banner = ({}) => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get(requests.fetchTrending);
+			const request = await axios.get(trendingAPI);
 			setMovie(
 				request.data.results[
 					Math.floor(Math.random() * request.data.results.length - 1)

@@ -18,8 +18,4 @@ export const StyledMoviePoster = styled.div.attrs({
 		max-height: 250px;
 		object-fit: contain;
 	}
-
-	.row__poster-img--large {
-		max-height: 300px;
-	}
 `;

@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
-import { StyledBanner } from "./Banner.styled";
 import axios from "../../axios";
 import requests from "../../Requests";
 import TypeWriter from "react-typewriter";
+import MovieData from "../MovieData/MovieData";
+import { modalContext } from "../../context/modalContext";
+import { StyledBanner } from "./Banner.styled";
 
-const Banner = ({ openModal, movieData }) => {
+const Banner = ({}) => {
 	const [movie, setMovie] = useState([]);
 	const [overview, setOverview] = useState(true);
+	const { modalOpen, modalBodyHandler } = useContext(modalContext);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -25,8 +28,9 @@ const Banner = ({ openModal, movieData }) => {
 	}, []);
 
 	const modalHandler = (movie) => {
-		openModal();
-		movieData(movie);
+		modalOpen();
+		const modalBody = <MovieData movieData={movie} />;
+		modalBodyHandler(modalBody);
 	};
 
 	const truncate = (string, n) =>

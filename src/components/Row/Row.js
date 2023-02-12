@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { StyledRow } from "./Row.styled";
 import axios from "../../axios";
+import MoviePoster from "../MoviePoster/MoviePoster";
+import { StyledRow } from "./Row.styled";
 
 function Row({ title, fetchUrl, openModal, movieData, isLargeRow = false }) {
 	const [movies, setMovies] = useState([]);
-
-	const base_url = "https://image.tmdb.org/t/p/original";
 
 	useEffect(() => {
 		async function fetchData() {
@@ -18,34 +17,20 @@ function Row({ title, fetchUrl, openModal, movieData, isLargeRow = false }) {
 		fetchData();
 	}, [fetchUrl]);
 
-	const modalHandler = (movie) => {
-		openModal();
-		movieData(movie);
-	};
-
 	return (
 		<StyledRow>
 			<h2>{title}</h2>
-
-			<div className="row__poster">
+			<div className="row__posters">
 				{movies.map(
 					(movie) =>
 						((isLargeRow && movie.poster_path) ||
 							(!isLargeRow && movie.poster_path)) && (
-							<div
-								className="row__posterInfo"
-								onClick={() => modalHandler(movie)}>
-								<img
-									className={`row__poster-img ${
-										isLargeRow && "row__poster-img--large"
-									}`}
-									key={movie.id}
-									src={`${base_url}${
-										isLargeRow ? movie.poster_path : movie.poster_path
-									}`}
-									alt={movie.name}
-								/>
-							</div>
+							<MoviePoster
+								movie={movie}
+								openModal={openModal}
+								movieData={movieData}
+								isLargeRow={isLargeRow}
+							/>
 						)
 				)}
 			</div>

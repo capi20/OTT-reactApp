@@ -9,6 +9,7 @@ export const StyledBanner = styled.div`
 	margin-bottom: 1rem;
 	background-size: cover;
 	background-position: center center;
+	margin-top: -100px;
 
 	.banner-top {
 		padding-left: 30px;

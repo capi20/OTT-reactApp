@@ -8,7 +8,7 @@ export const StyledModal = styled.div.attrs({
 	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 99;
-	width: min-content;
+	min-width: 50vw;
 	border: none;
 	background-color: white;
 	box-shadow: 1px 1px 1px #192133;

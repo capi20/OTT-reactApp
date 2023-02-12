@@ -9,7 +9,7 @@ export const StyledRow = styled.div`
 		padding-left: 30px;
 	}
 
-	.row__poster {
+	.row__posters {
 		display: flex;
 		gap: 8px;
 		overflow-y: auto;
@@ -17,27 +17,7 @@ export const StyledRow = styled.div`
 		padding: 25px 0 40px 30px;
 	}
 
-	.row__poster::-webkit-scrollbar {
+	.row__posters::-webkit-scrollbar {
 		display: none;
-	}
-
-	.row__posterInfo {
-		cursor: pointer;
-		position: relative;
-		transition: transform 450ms;
-
-		&:hover {
-			transform: scale(1.15);
-			z-index: 9;
-		}
-	}
-
-	.row__poster-img {
-		max-height: 250px;
-		object-fit: contain;
-	}
-
-	.row__poster-img--large {
-		max-height: 300px;
 	}
 `;

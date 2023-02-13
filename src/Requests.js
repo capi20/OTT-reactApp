@@ -1,4 +1,4 @@
-const API_KEY = "4aa5c5ced46b2088564fc28b70063695";
+const API_KEY = "";
 
 const requests = [
 	["Originals", `/discover/tv?api_key=${API_KEY}&with_networks=213`],

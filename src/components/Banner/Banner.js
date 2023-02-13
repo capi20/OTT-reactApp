@@ -2,14 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 
 import axios from "../../axios";
 import { trendingAPI } from "../../Requests";
-import TypeWriter from "react-typewriter";
 import MovieData from "../MovieData/MovieData";
 import { modalContext } from "../../context/modalContext";
 import { StyledBanner } from "./Banner.styled";
 
 const Banner = ({}) => {
 	const [movie, setMovie] = useState([]);
-	const [overview, setOverview] = useState(true);
 	const { modalOpen, modalBodyHandler } = useContext(modalContext);
 
 	useEffect(() => {
@@ -33,9 +31,6 @@ const Banner = ({}) => {
 		modalBodyHandler(modalBody);
 	};
 
-	const truncate = (string, n) =>
-		string?.length > n ? string.substr(0, n - 1) + "..." : string;
-
 	return (
 		<StyledBanner
 			style={{
@@ -53,13 +48,6 @@ const Banner = ({}) => {
 						More Info
 					</button>
 				</div>
-				<p
-					className="banner-top__description"
-					onClick={() => setOverview(!overview)}>
-					<TypeWriter typing={1}>
-						{overview ? truncate(movie?.overview, 150) : movie.overview}
-					</TypeWriter>
-				</p>
 			</div>
 
 			<div className="banner-bottom" />

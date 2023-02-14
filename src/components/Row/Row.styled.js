@@ -7,6 +7,10 @@ export const StyledRow = styled.div`
 		font-weight: 600;
 		margin: 0;
 		padding-left: 30px;
+
+		@media only screen and (max-width: 768px) {
+			padding-left: 15px;
+		}
 	}
 
 	.row__posters {

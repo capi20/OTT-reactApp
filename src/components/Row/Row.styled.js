@@ -15,6 +15,10 @@ export const StyledRow = styled.div`
 		overflow-y: auto;
 		overflow-x: scroll;
 		padding: 25px 0 40px 30px;
+
+		@media only screen and (max-width: 768px) {
+			padding: 25px 0 40px 15px;
+		}
 	}
 
 	.row__posters::-webkit-scrollbar {

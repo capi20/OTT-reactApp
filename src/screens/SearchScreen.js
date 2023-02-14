@@ -9,11 +9,15 @@ const StyledSearchScreen = styled.div`
 	margin: 0 30px;
 	color: white;
 
+	@media only screen and (max-width: 768px) {
+		margin: 0 15px;
+	}
+
 	.search-movie-wrapper {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		margin-top: 40px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
+		grid-gap: 5px;
+		justify-content: center;
 	}
 `;
 

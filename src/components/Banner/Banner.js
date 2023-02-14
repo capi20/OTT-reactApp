@@ -5,6 +5,7 @@ import { trendingAPI } from "../../Requests";
 import MovieData from "../MovieData/MovieData";
 import { modalContext } from "../../context/modalContext";
 import { StyledBanner } from "./Banner.styled";
+import { FaInfoCircle, FaPlay } from "react-icons/fa";
 
 const Banner = ({}) => {
 	const [movie, setMovie] = useState([]);
@@ -35,21 +36,27 @@ const Banner = ({}) => {
 			style={{
 				backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`
 			}}>
-			<div className="banner-top">
-				<h1 className="banner-top__title">
-					{movie?.title || movie?.name || movie?.original_name}
-				</h1>
-				<div className="banner-top__buttons">
-					<button className="banner-top__button">Play</button>
-					<button
-						className="banner-top__button"
-						onClick={() => modalHandler(movie)}>
-						More Info
-					</button>
+			<div className="banner">
+				<div className="banner__content">
+					<h1 className="banner__content-title">
+						{movie?.title || movie?.name || movie?.original_name}
+					</h1>
+					<div className="banner__content-buttons">
+						<button className="banner__content-button">
+							<FaPlay />
+							<span>Play</span>
+						</button>
+						<button
+							className="banner__content-button"
+							onClick={() => modalHandler(movie)}>
+							<FaInfoCircle />
+							<span>More Info</span>
+						</button>
+					</div>
 				</div>
 			</div>
 
-			<div className="banner-bottom" />
+			{/* <div className="banner-bottom" /> */}
 		</StyledBanner>
 	);
 };

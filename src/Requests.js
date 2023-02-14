@@ -1,4 +1,6 @@
-const API_KEY = "";
+import API_KEY from "./apiKey";
+
+console.log(API_KEY);
 
 const requests = [
 	["Originals", `/discover/tv?api_key=${API_KEY}&with_networks=213`],

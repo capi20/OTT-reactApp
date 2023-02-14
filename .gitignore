@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+apiKey.js
+
 # firebase files
 /.firebase
 .firebaserc

@@ -9,7 +9,7 @@ export const StyledNav = styled.header`
 	padding: 20px 0;
 	width: 100%;
 	height: 50px;
-	z-index: 1;
+	z-index: 999;
 	background-image: linear-gradient(
 		180deg,
 		#192133,
@@ -31,11 +31,14 @@ export const StyledNav = styled.header`
 
 		input {
 			outline: none;
-			padding: 10px;
-			margin-right: -20px;
-			width: 100%;
-			border: none;
+			padding: 10px 15px;
+			margin-right: -30px;
+			border: 1px solid white;
 			border-radius: 99px;
+			background-color: #192133;
+			color: white;
+			font-size: 14px;
+			transition: all 0.3s;
 		}
 
 		button {
@@ -44,9 +47,13 @@ export const StyledNav = styled.header`
 			padding: 0;
 			border-radius: 99px;
 			cursor: pointer;
+			color: white;
+			position: relative;
+			z-index: 9;
 
-			&:hover {
-				color: #192133;
+			svg {
+				width: 18px;
+				height: 18px;
 			}
 		}
 	}

@@ -7,11 +7,8 @@ import { StyledRow } from "./Row.styled";
 function Row({ title, fetchUrl }) {
 	const [movies, setMovies] = useState([]);
 
-	console.log(fetchUrl);
-
 	useEffect(() => {
 		async function fetchData() {
-			console.log(fetchUrl);
 			const request = await axios.get(fetchUrl);
 			setMovies(request.data.results);
 			return request;

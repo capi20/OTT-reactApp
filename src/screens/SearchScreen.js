@@ -22,7 +22,7 @@ const SearchScreen = () => {
 	const params = useParams();
 	return (
 		<StyledSearchScreen>
-			<h2>Results for: {params.id}</h2>
+			<h2>Searched for: {params.id}</h2>
 
 			{searchResult ? (
 				<div className="search-movie-wrapper">

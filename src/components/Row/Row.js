@@ -22,7 +22,8 @@ function Row({ title, fetchUrl }) {
 			<h2>{title}</h2>
 			<div className="row__posters">
 				{movies.map(
-					(movie) => movie.poster_path && <MoviePoster movie={movie} />
+					(movie, ind) =>
+						movie.poster_path && <MoviePoster key={ind} movie={movie} />
 				)}
 			</div>
 		</StyledRow>

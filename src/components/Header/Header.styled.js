@@ -29,8 +29,20 @@ export const StyledNav = styled.header`
 		}
 	}
 
-	.nav__search {
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 20px;
 		margin-right: 30px;
+
+		svg {
+			width: 18px;
+			height: 18px;
+			color: white;
+		}
+	}
+
+	.nav__search {
 		display: flex;
 
 		input {
@@ -51,14 +63,8 @@ export const StyledNav = styled.header`
 			padding: 0;
 			border-radius: 99px;
 			cursor: pointer;
-			color: white;
 			position: relative;
 			z-index: 9;
-
-			svg {
-				width: 18px;
-				height: 18px;
-			}
 		}
 	}
 `;

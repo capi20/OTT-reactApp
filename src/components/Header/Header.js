@@ -1,31 +1,31 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "../../axios";
 import { searchAPI } from "../../Requests";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaUser } from "react-icons/fa";
 import { searchContext } from "../../context/searchContext";
+import { loginContext } from "../../context/loginContext";
 import { StyledNav } from "./Header.styled";
 
 const Navigation = () => {
-	const searchRef = useRef("");
+	const searchRef = useRef();
+	const [searchQuery, setSearchQuery] = useState("");
 	const [isSearch, setIsSearch] = useState(false);
 	const { searchResultHandler } = useContext(searchContext);
+	const { isLogin, login } = useContext(loginContext);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		window.addEventListener("click", function () {
-			if (!isSearch) {
-				setIsSearch(false);
-				searchRef.current.value = "";
-			}
-		});
-	}, []);
+	window.addEventListener("click", function () {
+		if (isLogin && isSearch) {
+			setIsSearch(false);
+			setSearchQuery("");
+		}
+	});
 
 	const searchHandler = async (e) => {
 		e.stopPropagation();
 		setIsSearch(true);
-		let searchQuery = searchRef.current.value;
 
 		if (searchQuery === "") {
 			searchRef.current.focus();
@@ -48,22 +48,30 @@ const Navigation = () => {
 			<Link to="/" style={{ textDecoration: "none" }}>
 				<div className="nav__logo">HomeShow</div>
 			</Link>
-			<div className="nav__search">
-				<input
-					ref={searchRef}
-					placeholder="Search"
-					style={{
-						width: isSearch ? "200px" : "0",
-						// transform: isSearch ? "translateX(0)" : "translateX(50%)",
-						opacity: isSearch ? 1 : 0
-					}}
-					onClick={(e) => e.stopPropagation()}
-				/>
+			{isLogin && (
+				<div className="nav">
+					<div className="nav__search">
+						<input
+							ref={searchRef}
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+							placeholder="Search"
+							style={{
+								width: isSearch ? "200px" : "0",
+								opacity: isSearch ? 1 : 0
+							}}
+							onClick={(e) => e.stopPropagation()}
+						/>
 
-				<button onClick={(e) => searchHandler(e)}>
-					<FaSearch />
-				</button>
-			</div>
+						<button onClick={(e) => searchHandler(e)}>
+							<FaSearch />
+						</button>
+					</div>
+					<Link to="/login" onClick={() => login()}>
+						<FaUser />
+					</Link>
+				</div>
+			)}
 		</StyledNav>
 	);
 };

@@ -14,6 +14,7 @@ const StyledSearchScreen = styled.div`
 	}
 
 	.search-movie-wrapper {
+		margin-top: 60px;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
 		grid-gap: 5px;

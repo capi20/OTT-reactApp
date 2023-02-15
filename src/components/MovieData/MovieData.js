@@ -8,7 +8,9 @@ const MovieData = ({ movieData }) => {
 	return (
 		<StyledMovieData
 			style={{
-				backgroundImage: `url("${base_url}${movieData.backdrop_path}")`
+				backgroundImage: movieData.backdrop_path
+					? `url("${base_url}${movieData.backdrop_path}")`
+					: "none"
 			}}>
 			<div className="movie__info">
 				<h2>{movieData.title}</h2>

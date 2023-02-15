@@ -3,18 +3,21 @@ import Main from "./screens/Main";
 import SearchContextProvider from "./context/searchContext";
 import ModalContextProvider from "./context/modalContext";
 import StyledGlobal from "./App.styled";
+import LoginContextProvider from "./context/loginContext";
 
 function App() {
 	return (
-		<ModalContextProvider>
-			<SearchContextProvider>
+		<SearchContextProvider>
+			<LoginContextProvider>
 				<div className="App">
 					<StyledGlobal />
 					<Header />
-					<Main />
+					<ModalContextProvider>
+						<Main />
+					</ModalContextProvider>
 				</div>
-			</SearchContextProvider>
-		</ModalContextProvider>
+			</LoginContextProvider>
+		</SearchContextProvider>
 	);
 }
 

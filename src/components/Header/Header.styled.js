@@ -6,14 +6,13 @@ export const StyledNav = styled.header`
 	align-items: center;
 	position: fixed;
 	top: 0;
-	padding: 30px 0;
+	padding: 18px 0;
 	width: 100%;
-	height: 50px;
 	z-index: 999;
 	background-image: linear-gradient(
 		180deg,
 		#192133,
-		rgba(37, 37, 37, 0.61),
+		rgba(37, 37, 37, 0.7),
 		transparent
 	);
 
@@ -32,29 +31,40 @@ export const StyledNav = styled.header`
 	.nav {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
+		flex: 1;
 		gap: 20px;
 		margin-right: 30px;
 
 		svg {
-			width: 18px;
-			height: 18px;
+			width: 22px;
+			height: 22px;
 			color: white;
 		}
 	}
 
 	.nav__search {
 		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		max-width: 300px;
 
 		input {
 			outline: none;
+			width: 0px;
+			opacity: 0;
 			padding: 10px 15px;
 			margin-right: -30px;
 			border: 1px solid white;
-			border-radius: 99px;
 			background-color: #192133;
 			color: white;
-			font-size: 14px;
+			font-size: 17px;
 			transition: all 0.3s;
+		}
+
+		.show-search {
+			width: 100%;
+			opacity: 1;
 		}
 
 		button {
@@ -66,5 +76,33 @@ export const StyledNav = styled.header`
 			position: relative;
 			z-index: 9;
 		}
+	}
+
+	.btn-container {
+		position: relative;
+		text-align: center;
+	}
+
+	.dropdown {
+		position: absolute;
+		top: 40px;
+		left: -22px;
+		width: fit-content;
+		background: orange;
+		padding: 0.5rem 1rem;
+		text-align: center;
+		visibility: hidden;
+		border-radius: 5px;
+	}
+	.show-dropdown {
+		visibility: visible;
+	}
+	.dropdown-btn {
+		background: transparent;
+		color: white;
+		border-color: transparent;
+		text-transform: capitalize;
+		cursor: pointer;
+		letter-spacing: 1px;
 	}
 `;

@@ -8,13 +8,17 @@ export const StyledModal = styled.div.attrs({
 	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 99;
-	min-width: 50vw;
+	min-width: 80vw;
 	border: none;
 	background-color: white;
 	box-shadow: 1px 1px 1px #192133;
 	transition: all 0.3s ease-out;
 
-	@media only screen and (max-width: 768px) {
-		min-width: 80vw;
+	@media only screen and (min-width: 990px) {
+		min-width: 60vw;
+	}
+
+	@media only screen and (min-width: 1200px) {
+		min-width: 50vw;
 	}
 `;

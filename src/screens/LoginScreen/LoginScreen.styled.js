@@ -6,50 +6,33 @@ export const StyledLogin = styled.div`
 	margin-left: auto;
 	margin-right: auto;
 	color: white;
+	letter-spacing: 1px;
+	font-size: 18px;
 
 	form {
 		display: grid;
 		flex-direction: column;
+		gap: 20px;
 	}
 
-	form > h1 {
-		text-align: left;
-		margin-bottom: 25px;
-	}
-
-	form > input {
-		outline-width: 0;
-		height: 40px;
-		margin-bottom: 14px;
-		border-radius: 5px;
-		border: none;
-		padding: 5px 15px;
-		font-size: 1rem;
-	}
-
-	form > button {
-		padding: 16px 20px;
-		font-size: 1rem;
-		color: #fff;
-		border-radius: 5px;
+	form button {
+		padding: 10px 20px;
 		background-color: orange;
-		font-weight: 600;
-		border: none;
+	}
+
+	.demo-button {
+		background-color: transparent;
+		border: 1px solid white;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	.member-btn {
+		padding: 0 5px;
+		background: transparent;
 		cursor: pointer;
-		margin-top: 20px;
-	}
-
-	form > h4 {
-		text-align: left;
-		margin-top: 30px;
-	}
-
-	.login_gray {
-		color: gray;
-	}
-
-	.login_link:hover {
-		cursor: pointer;
-		text-decoration: underline;
+		color: orange;
 	}
 `;

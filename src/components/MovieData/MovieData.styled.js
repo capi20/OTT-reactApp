@@ -8,9 +8,10 @@ export const StyledMovieData = styled.div`
 	min-height: inherit;
 
 	.movie__info {
-		padding: 1px 20px;
-		background: rgba(37, 37, 37, 0.9);
+		padding: 20px 20px;
+		background: rgba(37, 37, 37, 0.95);
 		min-height: inherit;
 		font-size: 20px;
+		letter-spacing: 1px;
 	}
 `;

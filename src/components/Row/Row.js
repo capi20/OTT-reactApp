@@ -11,6 +11,7 @@ function Row({ title, fetchUrl }) {
 		async function fetchData() {
 			const request = await axios.get(fetchUrl);
 			setMovies(request.data.results);
+			console.log(request.data);
 			return request;
 		}
 
@@ -22,8 +23,8 @@ function Row({ title, fetchUrl }) {
 			<h2>{title}</h2>
 			<div className="row__posters">
 				{movies.map(
-					(movie, ind) =>
-						movie.poster_path && <MoviePoster key={ind} movie={movie} />
+					(movie) =>
+						movie.poster_path && <MoviePoster key={movie.id} movie={movie} />
 				)}
 			</div>
 		</StyledRow>

@@ -13,10 +13,12 @@ const MovieData = ({ movieData }) => {
 					: "none"
 			}}>
 			<div className="movie__info">
-				<h2>{movieData.title}</h2>
-				<p>{movieData.overview}</p>
+				<h2 className="mb-3">{movieData.title}</h2>
+				<p className="mb-3">{movieData.overview}</p>
 				{movieData.vote_average && (
-					<p>Rating: {movieData.vote_average.toFixed(1)} / 10</p>
+					<p className="mb-2">
+						Rating: {movieData.vote_average.toFixed(1)} / 10
+					</p>
 				)}
 				{movieData.release_date && (
 					<p>Release Date: {movieData.release_date}</p>

@@ -1,0 +1,12 @@
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";
+export const SET_MODAL_DATA = "SET_MODAL_DATA";
+
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
+
+export const SEARCH_MOVIE_START = "SEARCH_MOVIE_START";
+export const SEARCH_MOVIE_SUCCESS = "SEARCH_MOVIE_SUCCESS";
+export const SEARCH_MOVIE_ERROR = "SEARCH_MOVIE_ERROR";
+
+export const HANDLE_CHANGE = "HANDLE_CHANGE";

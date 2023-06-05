@@ -1,13 +1,19 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { loginContext } from "../../context/loginContext.js";
+import FormRow from "../../components/FormRow.js";
+import { useAppContext } from "../../context/AppContext.js";
 import { StyledLogin } from "./LoginScreen.styled.js";
 
+const initialState = {
+	name: "",
+	email: "",
+	password: "",
+	isMember: true
+};
+
 function SignInScreen() {
-	const emailRef = useRef(null);
-	const passwordRef = useRef(null);
-	const { login } = useContext(loginContext);
+	const [values, setValues] = useState(initialState);
+	const { loginUser } = useAppContext();
 	const navigate = useNavigate();
 
 	const register = (e) => {
@@ -16,30 +22,57 @@ function SignInScreen() {
 
 	const signIn = (e) => {
 		e.preventDefault();
-		login();
+		loginUser();
 		navigate("/");
+	};
+
+	const onChangeHandler = (e) => {
+		setValues({ ...values, [e.target.name]: e.target.value });
+	};
+
+	const toggleMember = () => {
+		setValues({ ...values, isMember: !values.isMember });
 	};
 
 	return (
 		<StyledLogin className="login">
 			<form>
-				<h1>Sign In</h1>
-				<input ref={emailRef} placeholder="Email" type="email" required />
-				<input
-					ref={passwordRef}
-					placeholder="Password"
-					type="password"
-					required
+				<h1 className="mb-2 align-center">
+					{values.isMember ? "Login" : "Register"}
+				</h1>
+				{!values.isMember && (
+					<FormRow
+						type="text"
+						name="name"
+						value={values.name}
+						handleChange={onChangeHandler}
+					/>
+				)}
+				<FormRow
+					type="email"
+					name="email"
+					value={values.email}
+					handleChange={onChangeHandler}
 				/>
-				<button type="submit" onClick={signIn}>
-					Sign In
+				<FormRow
+					type="password"
+					name="password"
+					value={values.password}
+					handleChange={onChangeHandler}
+				/>
+				<button type="submit" className="mt-2" onClick={signIn}>
+					Submit
 				</button>
-				<h4>
-					<span className="login_gray">New to HomeShow? </span>
-					<span className="login_link" onClick={register}>
-						Sign up now
-					</span>
-				</h4>
+				<button type="button" className="demo-button" onClick={signIn}>
+					Demo App
+				</button>
+				<p>
+					{values.isMember ? "Not a member yet?" : "Already a member?"}
+
+					<button type="button" onClick={toggleMember} className="member-btn">
+						{values.isMember ? "Register" : "Login"}
+					</button>
+				</p>
 			</form>
 		</StyledLogin>
 	);

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import HomeScreen from "./HomeScreen";
 import SearchScreen from "./SearchScreen";
 import LoginScreen from "./LoginScreen/LoginScreen";
 import Modal from "../components/Modal/Modal";
-import { modalContext } from "../context/modalContext";
 import styled from "styled-components";
+import ProtectedRoute from "./ProtectedRoute";
+import SharedLayout from "./SharedLayout";
+import { useAppContext } from "../context/AppContext";
 
 const StyledMain = styled.main`
 	padding-top: 100px;
@@ -15,15 +16,23 @@ const StyledMain = styled.main`
 `;
 
 const Main = () => {
-	const { isOpen, modalClose, modalBody } = useContext(modalContext);
+	const { isModalOpen, modalBody, closeModal } = useAppContext();
 	return (
 		<StyledMain>
 			<Routes>
-				<Route path="/search/:id" element={<SearchScreen />} />
+				<Route
+					path="/"
+					element={
+						<ProtectedRoute>
+							<SharedLayout />
+						</ProtectedRoute>
+					}>
+					<Route index element={<HomeScreen />} />
+					<Route path="search/:id" element={<SearchScreen />} />
+				</Route>
 				<Route path="login" element={<LoginScreen />} />
-				<Route path="/" element={<HomeScreen />} />
 			</Routes>
-			<Modal isOpen={isOpen} close={modalClose}>
+			<Modal isOpen={isModalOpen} close={closeModal}>
 				{modalBody}
 			</Modal>
 		</StyledMain>

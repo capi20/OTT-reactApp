@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import MoviePoster from "../components/MoviePoster/MoviePoster";
-import { searchContext } from "../context/searchContext";
 import styled from "styled-components";
+import { useAppContext } from "../context/AppContext";
 
 const StyledSearchScreen = styled.div`
 	margin: 0 30px;
@@ -14,29 +13,32 @@ const StyledSearchScreen = styled.div`
 	}
 
 	.search-movie-wrapper {
-		margin-top: 60px;
+		padding: 30px 0;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
-		grid-gap: 5px;
-		justify-content: center;
+		grid-template-columns: repeat(auto-fit, minmax(163px, max-content));
+		grid-gap: 15px;
+	}
+
+	p {
+		font-size: 24px;
 	}
 `;
 
 const SearchScreen = () => {
-	const { searchResult } = useContext(searchContext);
+	const { searchResult } = useAppContext();
 	const params = useParams();
 	return (
 		<StyledSearchScreen>
-			<h2>Searched for: {params.id}</h2>
+			<h1 className="mb-3">Searched for: {params.id}</h1>
 
 			{searchResult ? (
 				<div className="search-movie-wrapper">
 					{searchResult.map((movie) => (
-						<MoviePoster movie={movie} />
+						<MoviePoster key={movie.id} movie={movie} />
 					))}
 				</div>
 			) : (
-				<h3>No result found!</h3>
+				<p>Oops! No result found...</p>
 			)}
 		</StyledSearchScreen>
 	);

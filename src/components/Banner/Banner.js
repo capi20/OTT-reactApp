@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 
 import axios from "../../axios";
 import { trendingAPI } from "../../Requests";
-import MovieData from "../MovieData/MovieData";
-import { modalContext } from "../../context/modalContext";
 import { StyledBanner } from "./Banner.styled";
 import { FaInfoCircle, FaPlay } from "react-icons/fa";
+import { useAppContext } from "../../context/AppContext";
 
 const Banner = ({}) => {
 	const [movie, setMovie] = useState([]);
-	const { modalOpen, modalBodyHandler } = useContext(modalContext);
+	const { fetchMovieVideos, showMovieInfo } = useAppContext();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -25,12 +24,6 @@ const Banner = ({}) => {
 		fetchData();
 	}, []);
 
-	const modalHandler = (movie) => {
-		modalOpen();
-		const modalBody = <MovieData movieData={movie} />;
-		modalBodyHandler(modalBody);
-	};
-
 	return (
 		<StyledBanner
 			style={{
@@ -38,17 +31,19 @@ const Banner = ({}) => {
 			}}>
 			<div className="banner">
 				<div className="banner__content">
-					<h1 className="banner__content-title">
+					<h1 className="banner__content-title mb-3">
 						{movie?.title || movie?.name || movie?.original_name}
 					</h1>
 					<div className="banner__content-buttons">
-						<button className="banner__content-button">
+						<button
+							className="banner__content-button"
+							onClick={() => fetchMovieVideos(movie.id)}>
 							<FaPlay />
 							<span>Play</span>
 						</button>
 						<button
 							className="banner__content-button"
-							onClick={() => modalHandler(movie)}>
+							onClick={() => showMovieInfo(movie)}>
 							<FaInfoCircle />
 							<span>More Info</span>
 						</button>

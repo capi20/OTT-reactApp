@@ -1,5 +1,3 @@
-import React from "react";
-
 import Banner from "../components/Banner/Banner";
 import Row from "../components/Row/Row";
 import requests from "../Requests";
@@ -15,7 +13,7 @@ const HomeScreen = () => {
 			<Banner />
 			<Rows>
 				{requests.map((request) => (
-					<Row title={request[0]} fetchUrl={request[1]} />
+					<Row key={request[0]} title={request[0]} fetchUrl={request[1]} />
 				))}
 			</Rows>
 		</>
